@@ -1,4 +1,6 @@
-
+[root@master01 docker]# docker run -itd -p 18000:8000  k8s_week02:latest
+46dd4e005b82ae02892e7846d48d8a2819cb7fe611661c67525b24d3b2eb1e32
+[root@master01 ~]# 
 [root@master01 ~]# docker inspect  5bc4f25dc348 | grep  -i pid
             "Pid": 2631,
             "PidMode": "",
