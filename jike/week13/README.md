@@ -8,3 +8,18 @@
     最后祝愿所有选择此门课程的同学们都能收获自己所需的知识，也祝愿老师们精益求精，推出更多有价值的课程。  
     
 
+思路
+业务场景 - 航空机票询价服务（ShoppingService）
+机票询价接口返回下述三项信息，这三项信息分别由二个服务的三个不同的接口提供(Shopping)
+
+查询票价返回指定航线和日期的票价（FareService.Pring）
+返回指定航线前后一周的最低日历(FareService.PriceCalendar)
+返回目的地的旅游推荐(Travel.Query)
+机票询价接口属于BFF层，使用errgroup查询三个接口，三个接口查询均成功，然后聚合数据
+
+查询票价，先查询缓存，未命中，再查询DB，然后给MQ发一条构建缓存的任务
+
+票价缓存更新JOB，消费MQ中的构建任务，从DB中捞出信息打到Redis中
+
+架构设计
+![image](https://user-images.githubusercontent.com/50442900/158067540-9ed2a468-bd26-4ac1-af82-29cd61a1babe.png)
