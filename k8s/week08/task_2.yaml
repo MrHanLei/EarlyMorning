@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-srver
+spec:
+  type: ClusterIP
+  ports:
+    - port: 18080
+      protocol: TCP
+      name: http
+  selector:
+    name: my-srver
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-srver
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: mod8.51.cafe
+      http:
+        paths:
+          - backend:
+              service:
+                name: my-srver
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
