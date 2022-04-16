@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  httpserver:
+  - apiVersion: v2
+    appVersion: v0.0.4
+    created: "2022-03-20T03:34:00.222549+08:00"
+    description: A Helm chart for Kubernetes
+    digest: 4ef3a45a77b96271170a3938ff6a8327fcd08d4fc1a6946da5d7f2de04fa478b
+    name: httpserver
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/Am2901/httpserver/main/deploy/helm/repo/stable/httpserver-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-03-20T03:34:00.222036+08:00"
